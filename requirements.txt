@@ -1,0 +1,2 @@
+discord.py[voice]
+discord~=1.0.1

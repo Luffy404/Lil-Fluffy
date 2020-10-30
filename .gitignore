@@ -1,5 +1,5 @@
 # User Defines
-secrets.json
+*.secret
 
 
 # Byte-compiled / optimized / DLL files
