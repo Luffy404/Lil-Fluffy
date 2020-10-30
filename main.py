@@ -1,3 +1,5 @@
+from textwrap import dedent
+
 import discord
 from discord.ext import commands
 
@@ -16,5 +18,21 @@ def get_prefix(bot, message):
 
 
 client = commands.Bot(command_prefix=get_prefix)
+
+
+@client.listen()
+async def on_ready():
+    """Prints out some info about the bot once it's started and ready to use"""
+    owner = (await client.application_info()).owner
+
+    print(dedent(
+        f"""
+        I'm ready to go!
+        Logged in as: {client.user}
+        User ID: {client.user.id}
+        Owner: {owner}
+        """
+    ))
+
 
 client.run(TOKEN)
