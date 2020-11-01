@@ -2,8 +2,6 @@ import json
 import logging
 from discord.ext import commands
 
-logging.basicConfig(level=logging.INFO, filename='latest.log', format='[%(asctime)s] [%(levelname)s] %(message)s',
-                    datefmt='%d/%m/%Y %H:%M:%S')
 
 with open('token.secret')as fp:
     TOKEN = fp.read().strip()
@@ -12,7 +10,16 @@ with open('token.secret')as fp:
 with open('config.json') as file:
     config = json.load(file)
     COGS = config["COGS"]
+    LOG_AS_FILE = config["LOG_AS_FILE"]
     file.close()
+
+
+if LOG_AS_FILE is True:
+    logging.basicConfig(level=logging.INFO, filename='latest.log', format='[%(asctime)s] [%(levelname)s] %(message)s',
+                        datefmt='%d/%m/%Y %H:%M:%S')
+else:
+    logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s',
+                        datefmt='%d/%m/%Y %H:%M:%S')
 
 
 def get_prefix(bot, message):

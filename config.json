@@ -1,3 +1,4 @@
 {
+  "LOG_AS_FILE" : false,
   "COGS" : ["say", "listener"]
 }
