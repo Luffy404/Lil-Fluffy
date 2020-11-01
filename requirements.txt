@@ -1,1 +1,2 @@
-discord[voice]
+pynacl
+discord.py[voice]

@@ -39,9 +39,6 @@ if LOG_AS_FILE is True:
     root_logger.addHandler(file_handler)
 
 
-
-
-
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
