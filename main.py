@@ -1,10 +1,15 @@
+import json
 from textwrap import dedent
-
-import discord
 from discord.ext import commands
 
-with open('token.secret')as file:
-    TOKEN = file.read().strip()
+with open('token.secret')as fp:
+    TOKEN = fp.read().strip()
+    fp.close()
+
+with open ('config.json') as file:
+    config = json.load(file)
+    COGS = config["COGS"]
+    file.close()
 
 
 def get_prefix(bot, message):
@@ -34,5 +39,11 @@ async def on_ready():
         """
     ))
 
+for cog in COGS:
+    try:
+        client.load_extension(cog)
+    except Exception as e:
+        exc = f"{type(e).__name__}: {e}"
+        print(f"Failed to load Extension {cog}:\n{exc}")
 
 client.run(TOKEN)
