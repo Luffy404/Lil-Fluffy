@@ -1,5 +1,9 @@
 import json
+import logging
 from discord.ext import commands
+
+logging.basicConfig(level=logging.INFO, filename='latest.log', format='[%(asctime)s] [%(levelname)s] %(message)s',
+                    datefmt='%d/%m/%Y %H:%M:%S')
 
 with open('token.secret')as fp:
     TOKEN = fp.read().strip()
