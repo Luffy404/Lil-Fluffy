@@ -1,8 +1,6 @@
 import json
 from textwrap import dedent
 import logging
-
-import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
