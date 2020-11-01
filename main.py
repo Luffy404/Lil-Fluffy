@@ -1,5 +1,8 @@
+from datetime import datetime
 import json
 import logging
+import os
+
 from discord.ext import commands
 
 
@@ -11,15 +14,32 @@ with open('config.json') as file:
     config = json.load(file)
     COGS = config["COGS"]
     LOG_AS_FILE = config["LOG_AS_FILE"]
+    LOGFORMAT = config["LOGFORMAT"]
+    DATEFORMAT = config["DATEFORMAT"]
     file.close()
 
+log_formatter = logging.Formatter(LOGFORMAT, datefmt=DATEFORMAT)
+root_logger = logging.getLogger()
+root_logger.level = logging.INFO
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(log_formatter)
+root_logger.addHandler(console_handler)
 
 if LOG_AS_FILE is True:
-    logging.basicConfig(level=logging.INFO, filename='latest.log', format='[%(asctime)s] [%(levelname)s] %(message)s',
-                        datefmt='%d/%m/%Y %H:%M:%S')
-else:
-    logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s',
-                        datefmt='%d/%m/%Y %H:%M:%S')
+    try:
+        now = datetime.now()
+        os.replace('latest.log', f'logs\\{now.strftime("%d-%m-%Y %H-%M")}.log')
+
+    except Exception as e:
+        exc = f"{type(e).__name__}: {e}"
+        root_logger.error(f'Failed to move latest.log appending!: {exc}')
+
+    file_handler = logging.FileHandler('latest.log')
+    file_handler.setFormatter(log_formatter)
+    root_logger.addHandler(file_handler)
+
+
+
 
 
 def get_prefix(bot, message):

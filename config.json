@@ -1,4 +1,6 @@
 {
   "LOG_AS_FILE" : false,
+  "LOGFORMAT" : "[%(asctime)s] [%(levelname)-8s] [%(filename)-15s:%(lineno)-4d] %(message)s",
+  "DATEFORMAT" : "%d/%m/%Y %H:%M:%S",
   "COGS" : ["say", "listener"]
 }

@@ -1,5 +1,7 @@
 # User Defines
 *.secret
+logs/
+*.log
 
 
 # Byte-compiled / optimized / DLL files
