@@ -2,6 +2,7 @@ import time
 from discord.ext import commands
 import logging
 
+from cogs import database
 
 
 class Core(commands.Cog):
@@ -28,6 +29,12 @@ class Core(commands.Cog):
         heartbeat = ctx.bot.latency * 1000
         await msg.edit(content=f':heart: **{heartbeat:,.2f} ms**\t:file_cabinet: **{millis:,.2f} ms**.')
 
+    @commands.command(hidden=True)
+    @commands.check(commands.is_owner())
+    async def execute(self, ctx, *, message):
+        msg = await ctx.send('Executing the Command..')
+        result = database.execute_command(message)
+        await msg.edit(content="Executed Command! Response:\n" + result.fetchall())
 
 
 def setup(bot):
