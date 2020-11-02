@@ -55,7 +55,7 @@ client = commands.Bot(command_prefix=get_prefix, description=DESCRIPTION)
 
 for cog in COGS:
     try:
-        client.load_extension(cog)
+        client.load_extension("cogs."+cog)
         print(f"Loaded {cog}.")
     except Exception as e:
         exc = f"{type(e).__name__}: {e}"
