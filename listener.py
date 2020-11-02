@@ -8,6 +8,7 @@ from discord.ext.commands import Bot
 with open('config.json') as fp:
     config = json.load(fp)
     QUESTIONMARK = config["QUESTIONMARK"]
+    LOG_MESSAGES = config["LOG_MESSAGES"]
     fp.close()
 
 
@@ -84,10 +85,10 @@ class Listener(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        # Probably a Violation of Discord ToS yet I keep it in case of something going wrong. This isn't enabled by
-        # default.
-        logging.debug(f"[{message.guild.name}: {message.author} ({message.author.id})] : {message.content}")
-        await Bot(self.bot).process_commands(message)
+        if LOG_MESSAGES is True:
+            # Probably a Violation of Discord ToS yet I keep it in case of something going wrong. This isn't enabled by
+            # default.
+            logging.debug(f"[{message.guild.name}: {message.author} ({message.author.id})] : {message.content}")
 
 
 def setup(bot):
