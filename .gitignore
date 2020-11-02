@@ -2,6 +2,7 @@
 *secret*
 logs/
 *.log
+*.db
 
 
 # Byte-compiled / optimized / DLL files

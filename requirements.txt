@@ -1,3 +1,5 @@
 pynacl
 discord
 discord.py[voice]
+wheel
+mysql-connector-python

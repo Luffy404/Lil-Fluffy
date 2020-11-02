@@ -3,6 +3,7 @@ from discord.ext import commands
 import logging
 
 
+
 class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -26,6 +27,7 @@ class Core(commands.Cog):
         # Since sharded bots will have more than one latency, this will average them if needed.
         heartbeat = ctx.bot.latency * 1000
         await msg.edit(content=f':heart: **{heartbeat:,.2f} ms**\t:file_cabinet: **{millis:,.2f} ms**.')
+
 
 
 def setup(bot):

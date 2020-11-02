@@ -35,37 +35,37 @@ class Listener(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You're not allowed to use this command!")
-            logging.info(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.info(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                          f'tried to issue an command he had no permissions for!')
             logging.info(f'{ctx.message.author}: {ctx.message.content}')
 
         elif isinstance(error, commands.CommandNotFound):
             await ctx.message.add_reaction(QUESTIONMARK)
-            logging.info(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.info(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                          f"tried to issue an command that didn't exist!")
             logging.info(f'{ctx.message.author}: {ctx.message.content}')
 
         elif isinstance(error, commands.NotOwner):
             await ctx.send("You're not the owner of the bot.")
-            logging.info(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.info(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                          f"tried to issue an command that requires Owner privileges!")
             logging.info(f'{ctx.message.author}: {ctx.message.content}')
 
         elif isinstance(error, commands.BotMissingPermissions):
             await ctx.send(f"I don't have the required permission to execute this command.")
-            logging.info(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.info(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                          f"tried to issue an command that the bot has no permission to execute!")
             logging.info(f'{ctx.message.author}: {ctx.message.content}')
 
         elif isinstance(error, commands.BadArgument):
-            logging.info(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.info(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                          f"gave a bad argument!")
             logging.info(f'{ctx.message.author}: {ctx.message.content}')
 
         else:
             await ctx.send("An unexpected Error Occured, please Tag `Mad Luffy#3039`!")
             await ctx.send(f"```{error}```")
-            logging.warning(f'User "{ctx.message.author}" ({ctx.user.id}) '
+            logging.warning(f'User "{ctx.message.author}" ({ctx.message.author.id}) '
                             f"tried to invoke a command wich made an unexpected Error occur!")
             logging.warning(f'{ctx.message.author}: {ctx.message.content}')
             logging.warning(error)
