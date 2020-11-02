@@ -12,6 +12,7 @@ with open('token.secret')as fp:
 
 with open('config.json') as file:
     config = json.load(file)
+    DESCRIPTION = config["DESCRIPTION"]
     COGS = config["COGS"]
     LOG_AS_FILE = config["LOG_AS_FILE"]
     LOGFORMAT = config["LOGFORMAT"]
@@ -49,7 +50,7 @@ def get_prefix(bot, message):
     return commands.when_mentioned_or(*prefix)(bot, message)
 
 
-client = commands.Bot(command_prefix=get_prefix)
+client = commands.Bot(command_prefix=get_prefix, description=DESCRIPTION)
 
 
 for cog in COGS:
