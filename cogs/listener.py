@@ -5,6 +5,8 @@ import pathlib
 from pathlib import Path
 from textwrap import dedent
 import logging
+
+import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
@@ -39,6 +41,10 @@ class Listener(commands.Cog):
         if linesofcode > highest_loc[0][0]:
             database.execute_command(f'UPDATE counter SET highest_loc = {linesofcode}')
         database.execute_command(f'UPDATE counter SET loc = {linesofcode}')
+        await self.bot.wait_until_ready()
+
+        await self.bot.change_presence(
+            activity=discord.Activity(name=' over .help for info', type=discord.ActivityType.watching))
         print(dedent(
             f"""
             Bot is ready and awaiting Commands!
@@ -88,11 +94,11 @@ class Listener(commands.Cog):
             logging.warning(error)
 
     @commands.Cog.listener()
-    async def on_command(self, guild):
+    async def on_command(self):
         database.execute_command('UPDATE counter SET all_messages = all_commands + 1')
 
     @commands.Cog.listener()
-    async def on_command_completion(self, guild):
+    async def on_command_completion(self):
         database.execute_command('UPDATE counter SET all_messages = completed_commands + 1')
 
     @commands.Cog.listener()
@@ -119,6 +125,6 @@ def setup(bot):
             logging.info(f"[{message.guild.name}: {message.author} ({message.author.id})] : {message.content}")
 
         database.execute_command('UPDATE counter SET all_messages = all_messages + 1')
-        # TODO: Fix await bot.process_commands(message)
+        await bot.process_commands(message)
 
     bot.add_cog(Listener(bot))

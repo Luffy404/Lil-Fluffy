@@ -1,4 +1,6 @@
+import sys
 import time
+import discord
 from discord.ext import commands
 import logging
 
@@ -35,6 +37,19 @@ class Core(commands.Cog):
         msg = await ctx.send('Executing the Command..')
         result = database.execute_command(message)
         await msg.edit(content="Executed Command! Response:\n" + result)
+
+    @commands.command(hidden=True, aliases=["shutdown"])
+    @commands.check(commands.is_owner())
+    async def restart(self, ctx):
+        try:
+            await ctx.cleanup(ctx.guild)
+        except:
+            print("")
+        await ctx.send("Shutting down / Restarting... :wave:")
+        await self.bot.change_presence(
+            activity=discord.Activity(name='with the Restart Button!', type=discord.ActivityType.playing),
+            status=discord.Status.dnd)
+        await sys.exit()
 
 
 def setup(bot):
