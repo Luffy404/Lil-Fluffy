@@ -1,15 +1,20 @@
+import glob
 import json
+import os
+import pathlib
 from pathlib import Path
 from textwrap import dedent
 import logging
 from discord.ext import commands
 from discord.ext.commands import Bot
 
+from cogs import database
 
 with open(str(Path().parent.absolute()) + "\\config.json") as fp:
     config = json.load(fp)
     QUESTIONMARK = config["QUESTIONMARK"]
     LOG_MESSAGES = config["LOG_MESSAGES"]
+    FILEFORMATS_TO_COUNT = config["FILEFORMATS_TO_COUNT"]
     fp.close()
 
 
@@ -21,7 +26,19 @@ class Listener(commands.Cog):
     async def on_ready(self):
         """Prints out some info about the bot once it's started and ready to use"""
         bot_app_info = (await Bot.application_info(self.bot))
-
+        allfiles = [""]
+        linesofcode = 0
+        for path, subdirs, files in os.walk(str(Path().parent.absolute())):
+            for name in files:
+                allfiles.append(str(pathlib.PurePath(path, name)))
+        for file in allfiles:
+            if file.endswith(tuple(FILEFORMATS_TO_COUNT)):
+                currentfile = open(file, 'r')
+                linesofcode += len(currentfile.read())
+        highest_loc = database.execute_command_fetchall("SELECT highest_loc from counter")
+        if linesofcode > highest_loc[0][0]:
+            database.execute_command(f'UPDATE counter SET highest_loc = {linesofcode}')
+        database.execute_command(f'UPDATE counter SET loc = {linesofcode}')
         print(dedent(
             f"""
             Bot is ready and awaiting Commands!
@@ -71,6 +88,14 @@ class Listener(commands.Cog):
             logging.warning(error)
 
     @commands.Cog.listener()
+    async def on_command(self, guild):
+        database.execute_command('UPDATE counter SET all_messages = all_commands + 1')
+
+    @commands.Cog.listener()
+    async def on_command_completion(self, guild):
+        database.execute_command('UPDATE counter SET all_messages = completed_commands + 1')
+
+    @commands.Cog.listener()
     async def on_guild_join(self, guild):
         logging.info("Succsessfully joined a server: " + guild.name)
         logging.info(f"Servers ({len(Bot(self.bot).guilds)}")
@@ -92,6 +117,8 @@ def setup(bot):
             # Probably a Violation of Discord ToS yet I keep it in case of something going wrong. This isn't enabled by
             # default.
             logging.info(f"[{message.guild.name}: {message.author} ({message.author.id})] : {message.content}")
-            await bot.process_commands(message)
+
+        database.execute_command('UPDATE counter SET all_messages = all_messages + 1')
+        # TODO: Fix await bot.process_commands(message)
 
     bot.add_cog(Listener(bot))

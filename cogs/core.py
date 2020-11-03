@@ -34,7 +34,7 @@ class Core(commands.Cog):
     async def execute(self, ctx, *, message):
         msg = await ctx.send('Executing the Command..')
         result = database.execute_command(message)
-        await msg.edit(content="Executed Command! Response:\n" + result.fetchall())
+        await msg.edit(content="Executed Command! Response:\n" + result)
 
 
 def setup(bot):
