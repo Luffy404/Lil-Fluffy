@@ -6,7 +6,7 @@ class Debug:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, brief='Loads an extension.')
     @commands.check(commands.is_owner())
     async def load(self, ctx, extension_name: str):
         """
@@ -21,7 +21,7 @@ class Debug:
             logging.info("{} loaded.".format(extension_name))
             await ctx.send("{} loaded.".format(extension_name))
 
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, brief='Unloads an extension.')
     @commands.check(commands.is_owner())
     async def unload(self, ctx, extension_name: str):
         """
@@ -32,7 +32,7 @@ class Debug:
         logging.info("{} unloaded.".format(extension_name))
         await ctx.send("{} unloaded.".format(extension_name))
 
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, brief='Reloads an extension.')
     @commands.check(commands.is_owner())
     async def reload(self, ctx, extension_name: str):
         """
