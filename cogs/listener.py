@@ -30,19 +30,28 @@ class Listener(commands.Cog):
         bot_app_info = (await Bot.application_info(self.bot))
         allfiles = [""]
         linesofcode = 0
+        chars_in_total = 0
+        highest_chars_in_total = database.execute_command_fetchall("SELECT highest_chars_in_total from counter")
+        highest_loc = database.execute_command_fetchall("SELECT highest_loc from counter")
         for path, subdirs, files in os.walk(str(Path().parent.absolute())):
             for name in files:
                 allfiles.append(str(pathlib.PurePath(path, name)))
         for file in allfiles:
             if file.endswith(tuple(FILEFORMATS_TO_COUNT)):
                 currentfile = open(file, 'r')
-                linesofcode += len(currentfile.read())
-        highest_loc = database.execute_command_fetchall("SELECT highest_loc from counter")
-        if linesofcode > highest_loc[0][0]:
-            database.execute_command(f'UPDATE counter SET highest_loc = {linesofcode}')
-        database.execute_command(f'UPDATE counter SET loc = {linesofcode}')
-        await self.bot.wait_until_ready()
+                chars_in_total += len(currentfile.read())
+                for _ in file:
+                    linesofcode += 1
 
+        if chars_in_total > highest_chars_in_total[0][0]:
+            database.execute_command(f'UPDATE counter SET highest_chars_in_total = {chars_in_total}')
+        database.execute_command(f'UPDATE counter SET chars_in_total = {chars_in_total}')
+
+        if linesofcode > highest_loc[0][0]:
+            database.execute_command(f'UPDATE counter SET highest_loc = {chars_in_total}')
+        database.execute_command(f'UPDATE counter SET loc = {chars_in_total}')
+
+        await self.bot.wait_until_ready()
         await self.bot.change_presence(
             activity=discord.Activity(name=' over .help for info', type=discord.ActivityType.watching))
         print(dedent(
