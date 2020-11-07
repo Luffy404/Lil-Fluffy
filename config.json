@@ -1,5 +1,6 @@
 {
   "DESCRIPTION" : "This bot is made by Mad Luffy#3039",
+  "PREFIXES" : ["l!", "L!", ".", "ll!", "LL!", "Ll!", "lL!"],
   "QUESTIONMARK" : "<:Command_Not_Found:514789597826252820>",
   "LOG_AS_FILE" : false,
   "LOG_MESSAGES" : true,
