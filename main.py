@@ -17,6 +17,7 @@ with open('config.json') as file:
     LOG_AS_FILE = config["LOG_AS_FILE"]
     LOGFORMAT = config["LOGFORMAT"]
     DATEFORMAT = config["DATEFORMAT"]
+    PREFIXES = config["PREFIXES"]
     file.close()
 
 log_formatter = logging.Formatter(LOGFORMAT, datefmt=DATEFORMAT)
@@ -43,11 +44,8 @@ if LOG_AS_FILE is True:
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
-    # Notice how you can use spaces in prefixes. Try to keep them simple though.
-    prefix = ['l!', 'L!', '.', 'll!', 'LL!', 'Ll!', 'lL!']
-
     # If we are in a guild, we allow for the user to mention us or use any of the prefixes in our list.
-    return commands.when_mentioned_or(*prefix)(bot, message)
+    return commands.when_mentioned_or(*PREFIXES)(bot, message)
 
 
 client = commands.Bot(command_prefix=get_prefix, description=DESCRIPTION)
