@@ -11,7 +11,7 @@ class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(brief='Pings the Bot and the Discord Servers')
     async def ping(self, ctx):
         """
         Pings the Bot and the Discord Servers
@@ -31,16 +31,24 @@ class Core(commands.Cog):
         heartbeat = ctx.bot.latency * 1000
         await msg.edit(content=f':heart: **{heartbeat:,.2f} ms**\t:file_cabinet: **{millis:,.2f} ms**.')
 
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, brief='Executes a Command in the Database')
     @commands.check(commands.is_owner())
     async def execute(self, ctx, *, message):
+        """
+        Executes a command in the Database.
+        Should only be used by the Owner to setup the Database.
+        """
         msg = await ctx.send('Executing the Command..')
         result = database.execute_command(message)
         await msg.edit(content="Executed Command! Response:\n" + result)
 
-    @commands.command(hidden=True, aliases=["shutdown"])
+    @commands.command(hidden=True, aliases=["shutdown"], brief='Shutdown or restarts the Bot.')
     @commands.check(commands.is_owner())
     async def restart(self, ctx):
+        """
+        Shutdown or restarts the Bot.
+        It leaves the chat and changes the status. It should only be run by the Owner.
+        """
         try:
             await ctx.cleanup(ctx.guild)
         except:
