@@ -10,7 +10,7 @@ class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief='Pings the Bot and the Discord Servers')
+    @commands.command(brief='Pings the Bot and the Discord Servers.')
     async def ping(self, ctx):
         """
         Pings the Bot and the Discord Servers
