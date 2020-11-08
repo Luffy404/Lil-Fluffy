@@ -54,6 +54,7 @@ class Core(commands.Cog):
         except:
             print("")
         await ctx.send("Shutting down / Restarting... :wave:")
+        time.sleep(3)
         await self.bot.change_presence(
             activity=discord.Activity(name='with the Restart Button!', type=discord.ActivityType.playing),
             status=discord.Status.dnd)
