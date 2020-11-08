@@ -7,5 +7,5 @@
   "LOGFORMAT" : "[%(asctime)s] [%(levelname)-8s] [%(filename)-15s:%(lineno)-4d] %(message)s",
   "DATEFORMAT" : "%d/%m/%Y %H:%M:%S",
   "FILEFORMATS_TO_COUNT" : [".py", ".bat", ".json"],
-  "COGS" : ["say", "listener", "core", "information", "debug"]
+  "COGS" : ["say", "listener", "core", "information", "debug", "music"]
 }
