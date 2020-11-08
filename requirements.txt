@@ -5,3 +5,4 @@ wheel
 mysql-connector-python
 libneko
 psutil
+youtube_dl
