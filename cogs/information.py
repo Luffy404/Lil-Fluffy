@@ -113,6 +113,49 @@ class Information(commands.Cog):
                         inline=True)
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=['inspect'], brief='Shows Information about a User.', usage='@Mad Luffy#3039')
+    async def user(self, ctx, member: discord.Member = None):
+        """
+        Shows Information about yourself or a user.
+        """
+        application_info = await Bot.application_info(self.bot)
+        roles = ''
+
+        if not member:
+            user = ctx.message.author
+        else:
+            user = member
+
+        for role in user.roles:
+            roles += f"{role}\n"
+
+        if user.bot:
+            is_human = f'{user.name} is a Bot!'
+        else:
+            is_human = f'{user.name} is a Person!'
+
+        permissions = '`' + \
+                      '`, `'.join(
+                          perm for perm, value in user.guild_permissions if value).upper() + '`'
+
+        embed = discord.Embed()
+        embed.set_footer(icon_url=application_info.icon_url, text=f"Requested by {user.name}")
+        embed.title = user.name
+        embed.add_field(name="Display Name",
+                        value=f"{user.display_name}#{user.discriminator}\n"
+                              f"({user.id})",
+                        inline=True)
+        embed.add_field(name="Is Bot or Person", value=f"{is_human}", inline=True)
+        embed.add_field(name="Joined at", value=f'{user.joined_at.strftime("%d-%m-%y  %H:%M:%S")}',
+                        inline=True)
+        embed.add_field(name="Account created at",
+                        value=f'{user.created_at.strftime("%d-%m-%y  %H:%M:%S")}', inline=True)
+        embed.add_field(name="All Roles", value=roles, inline=True)
+        embed.add_field(name="Permissions", value=permissions, inline=False)
+        embed.colour = user.color
+        embed.set_image(url=user.avatar_url)
+        await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Information(bot))
