@@ -6,3 +6,5 @@ mysql-connector-python
 libneko
 psutil
 youtube_dl
+ffmpeg
+ffmpeg-python
