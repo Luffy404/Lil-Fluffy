@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 import json
 import logging
@@ -20,6 +21,7 @@ with open('config.json') as file:
     PREFIXES = config["PREFIXES"]
     file.close()
 
+bot_uptime = time.monotonic()
 log_formatter = logging.Formatter(LOGFORMAT, datefmt=DATEFORMAT)
 root_logger = logging.getLogger()
 root_logger.level = logging.INFO
