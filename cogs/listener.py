@@ -47,8 +47,8 @@ class Listener(commands.Cog):
         database.execute_command(f'UPDATE counter SET chars_in_total = {chars_in_total}')
 
         if linesofcode > highest_loc[0][0]:
-            database.execute_command(f'UPDATE counter SET highest_loc = {chars_in_total}')
-        database.execute_command(f'UPDATE counter SET loc = {chars_in_total}')
+            database.execute_command(f'UPDATE counter SET highest_loc = {linesofcode}')
+        database.execute_command(f'UPDATE counter SET loc = {linesofcode}')
 
         await self.bot.wait_until_ready()
         await self.bot.change_presence(
@@ -102,12 +102,12 @@ class Listener(commands.Cog):
             logging.warning(error)
 
     @commands.Cog.listener()
-    async def on_command(self):
-        database.execute_command('UPDATE counter SET all_messages = all_commands + 1')
+    async def on_command(self, message):
+        database.execute_command('UPDATE counter SET all_commands = all_commands + 1')
 
     @commands.Cog.listener()
-    async def on_command_completion(self):
-        database.execute_command('UPDATE counter SET all_messages = completed_commands + 1')
+    async def on_command_completion(self, message):
+        database.execute_command('UPDATE counter SET completed_commands = completed_commands + 1')
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
