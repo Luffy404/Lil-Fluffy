@@ -165,6 +165,54 @@ class Information(commands.Cog):
         navigator += f"{member.name}#{member.discriminator}'s Permissions:\n\n{permissions}"
         navigator.start(ctx)
 
+    @commands.command(brief='Shows some Stuff about the Server!')
+    async def serverinfo(self, ctx):
+        """
+        Shows some information about the Guild (Server) you're currently in.
+        """
+        guild = ctx.message.guild
+        application_info = await Bot.application_info(self.bot)
+        emojis = ''
+        categories = 0
+        text_channels = 0
+        voice_channels = 0
+        bots = 0
+        users = 0
+
+        for _ in guild.categories:
+            categories += 1
+        for _ in guild.text_channels:
+            text_channels += 1
+        for _ in guild.voice_channels:
+            voice_channels += 1
+        for member in guild.members:
+            if member.bot:
+                bots += 1
+            else:
+                users += 1
+        for emoji in list(guild.emojis):
+            emojis += f'{discord.utils.get(self.bot.emojis, name=emoji.name)} '
+        total_users = bots + users
+
+        embed = discord.Embed(color=0xF9006F)
+        embed.set_image(url=guild.icon_url)
+        embed.title = guild.name
+        embed.add_field(name="Server", value=f"Name: **{guild.name}**\n(**{guild.id}**)\n\nOwner: **{guild.owner.name}#"
+                                             f"{guild.owner.discriminator}**\n(**{guild.owner_id}**)\nRegion: "
+                                             f"**{guild.region}**\nServer created at:"
+                                             f" **{guild.created_at.strftime('%d-%m-%y  %H:%M:%S')}**")
+        embed.add_field(name="Members", value=f"**{total_users}** Total Users\n**{users}** People\n"
+                                              f"**{bots}** Bots")
+        embed.add_field(name="Channels", value=f"**{categories}** Categories\n**{text_channels}** Text Channels\n"
+                                               f"**{voice_channels}** Voice Channels")
+        embed.set_footer(icon_url=application_info.icon_url, text=f"Requested by {ctx.message.author.name}")
+
+        navigator = pag.EmbedNavigatorFactory()
+        navigator += "**All Emojis on this guild:** \n\n" + emojis
+
+        await ctx.send(embed=embed)
+        navigator.start(ctx)
+
 
 def setup(bot):
     bot.add_cog(Information(bot))
