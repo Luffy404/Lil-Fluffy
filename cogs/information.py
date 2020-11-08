@@ -1,11 +1,11 @@
 import json
 import platform
 import time
-
 import discord
 import psutil
 from discord.ext import commands
 from discord.ext.commands import Bot
+from libneko import pag
 
 import main
 from cogs import database
@@ -121,40 +121,49 @@ class Information(commands.Cog):
         application_info = await Bot.application_info(self.bot)
         roles = ''
 
-        if not member:
-            user = ctx.message.author
-        else:
-            user = member
+        if member is None:
+            member = ctx.message.author
 
-        for role in user.roles:
+        for role in member.roles:
             roles += f"{role}\n"
 
-        if user.bot:
-            is_human = f'{user.name} is a Bot!'
+        if member.bot:
+            is_human = f'{member.name} is a Bot!'
         else:
-            is_human = f'{user.name} is a Person!'
+            is_human = f'{member.name} is a Person!'
 
         permissions = '`' + \
                       '`, `'.join(
-                          perm for perm, value in user.guild_permissions if value).upper() + '`'
+                          perm for perm, value in member.guild_permissions if value).upper() + '`'
 
         embed = discord.Embed()
-        embed.set_footer(icon_url=application_info.icon_url, text=f"Requested by {user.name}")
-        embed.title = user.name
+        embed.set_footer(icon_url=application_info.icon_url, text=f"Requested by {member.name}")
+        embed.title = member.name
         embed.add_field(name="Display Name",
-                        value=f"{user.display_name}#{user.discriminator}\n"
-                              f"({user.id})",
+                        value=f"{member.display_name}#{member.discriminator}\n"
+                              f"({member.id})",
                         inline=True)
         embed.add_field(name="Is Bot or Person", value=f"{is_human}", inline=True)
-        embed.add_field(name="Joined at", value=f'{user.joined_at.strftime("%d-%m-%y  %H:%M:%S")}',
+        embed.add_field(name="Joined at", value=f'{member.joined_at.strftime("%d-%m-%y  %H:%M:%S")}',
                         inline=True)
         embed.add_field(name="Account created at",
-                        value=f'{user.created_at.strftime("%d-%m-%y  %H:%M:%S")}', inline=True)
+                        value=f'{member.created_at.strftime("%d-%m-%y  %H:%M:%S")}', inline=True)
         embed.add_field(name="All Roles", value=roles, inline=True)
         embed.add_field(name="Permissions", value=permissions, inline=False)
-        embed.colour = user.color
-        embed.set_image(url=user.avatar_url)
+        embed.colour = member.color
+        embed.set_image(url=member.avatar_url)
         await ctx.send(embed=embed)
+
+    @commands.command(brief='Shows the current permissions.', aliases=['permission', 'perms'], usage='@Mad Luffy#3039')
+    async def perm(self, ctx, member: discord.Member = None):
+        """
+        Shows Permissions Users / Bots have.
+        Needs permission to manage roles, to make the command work.
+        """
+        permissions = '`' + '`\n `'.join(perm for perm, value in member.guild_permissions if value).upper() + '`'
+        navigator = pag.EmbedNavigatorFactory()
+        navigator += f"{member.name}#{member.discriminator}'s Permissions:\n\n{permissions}"
+        navigator.start(ctx)
 
 
 def setup(bot):
