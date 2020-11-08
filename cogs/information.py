@@ -7,10 +7,9 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from libneko import pag
 
-import main
 from cogs import database
 
-bot_uptime = main.bot_uptime
+bot_uptime = time.monotonic()
 
 
 class Information(commands.Cog):
