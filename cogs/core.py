@@ -57,6 +57,7 @@ class Core(commands.Cog):
         await self.bot.change_presence(
             activity=discord.Activity(name='with the Restart Button!', type=discord.ActivityType.playing),
             status=discord.Status.dnd)
+        self.bot.logout()
         await sys.exit()
 
 
