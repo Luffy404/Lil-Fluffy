@@ -1,4 +1,4 @@
-[![GitHub contributors](https://img.shields.io/github/contributors/Luffy404/Lil-Fluffy.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/contributors/) [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![Discord](https://img.shields.io/discord/677473028204134401.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=XZazRvchjP)](https://discord.gg/vpEv3HJ)
+[![GitHub contributors](https://img.shields.io/github/contributors/Luffy404/Lil-Fluffy.svg)](https://GitHub.com/Luffy404/Lil-Fluffy/graphs/contributors/) [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![Discord](https://img.shields.io/discord/677473028204134401.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=vpEv3HJ)](https://discord.gg/vpEv3HJ)
 <br />
 <p align="center">
   <a href="https://github.com/Luffy404/Lil-Fluffy">
