@@ -23,7 +23,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-
+  
 [contributors-shield]: https://img.shields.io/github/contributors/Luffy404/Lil-Fluffy.svg?style=flat-square
 [contributors-url]: https://github.com/Luffy404/Lil-Fluffy/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Luffy404/Lil-Fluffy.svg?style=flat-square
@@ -32,5 +32,5 @@
 [stars-url]: https://github.com/Luffy404/Lil-Fluffy/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Luffy404/Lil-Fluffy.svg?style=flat-square
 [issues-url]: https://github.com/Luffy404/Lil-Fluffy/issues
-[license-shield]: https://img.shields.io/github/license/Luffy404/Lil-Fluffy.svg?style=flat-square
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://github.com/Luffy404/Lil-Fluffy/blob/main/LICENSE
