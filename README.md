@@ -33,4 +33,4 @@
 [issues-shield]: https://img.shields.io/github/issues/Luffy404/Lil-Fluffy.svg?style=flat-square
 [issues-url]: https://github.com/Luffy404/Lil-Fluffy/issues
 [license-shield]: https://img.shields.io/github/license/Luffy404/Lil-Fluffy.svg?style=flat-square
-[license-url]: https://github.com/Luffy404/Lil-Fluffy/blob/master/LICENSE.txt
+[license-url]: https://github.com/Luffy404/Lil-Fluffy/blob/main/LICENSE
