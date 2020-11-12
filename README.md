@@ -1,4 +1,9 @@
-[![GitHub contributors](https://img.shields.io/github/contributors/Luffy404/Lil-Fluffy.svg)](https://GitHub.com/Luffy404/Lil-Fluffy/graphs/contributors/) [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![Discord](https://img.shields.io/discord/677473028204134401.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=vpEv3HJ)](https://discord.gg/vpEv3HJ)
+[![GitHub contributors][contributors-shield]][contributors-url] 
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![Discord][discord-shield]][discord-url]
 <br />
 <p align="center">
   <a href="https://github.com/Luffy404/Lil-Fluffy">
@@ -8,12 +13,12 @@
 	  <p align="center">
     An awesome Bot created by Luffy404
     <br />
-    <a href="[https://github.com/Luffy404/Lil-Fluffy](https://github.com/Luffy404/Lil-Fluffy)"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Luffy404/Lil-Fluffy"><strong>Explore the docs »</strong></a>
     <br />
     <a href="https://github.com/Luffy404/Lil-Fluffy/issues">Report Bug</a>
     ·
     <a href="https://github.com/Luffy404/Lil-Fluffy/issues">Request Feature</a>
-  </p>
+ </p>
 
 
 ## Table of Contents
@@ -23,7 +28,41 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [Cogs](#cogs)
+    * [core.py](#corepy)
+    * [debug.py](#debugpy)
+    * [fun.py](#funpy)
+    * [information.py](#informationpy)
+    * [listener.py](#listenerpy)
+    * [music.py](#musicpy)
+    * [say.py](#saypy)
+    
+## About the Project
+
+### Built with
+
+## Getting Started
+
+### Prerequisites
+
+### Installation
+
+## Cogs
   
+### core.py
+
+### debug.py
+
+### fun.py
+
+### information.py
+
+### listener.py
+
+### music.py
+
+### say.py
+
 [contributors-shield]: https://img.shields.io/github/contributors/Luffy404/Lil-Fluffy.svg?style=flat-square
 [contributors-url]: https://github.com/Luffy404/Lil-Fluffy/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Luffy404/Lil-Fluffy.svg?style=flat-square
@@ -34,3 +73,5 @@
 [issues-url]: https://github.com/Luffy404/Lil-Fluffy/issues
 [license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://github.com/Luffy404/Lil-Fluffy/blob/main/LICENSE
+[discord-shield]: https://img.shields.io/discord/677473028204134401.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=vpEv3HJ
+[discord-url]: https://discord.gg/XZazRvchjP
