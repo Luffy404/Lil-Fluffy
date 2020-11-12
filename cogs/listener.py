@@ -1,9 +1,9 @@
 import json
+import logging
 import os
 import pathlib
 from pathlib import Path
 from textwrap import dedent
-import logging
 
 import discord
 from discord.ext import commands
@@ -19,6 +19,7 @@ with open(str(Path().parent.absolute()) + "\\config.json") as fp:
     fp.close()
 
 
+# noinspection PyUnusedLocal,PyUnusedLocal
 class Listener(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
