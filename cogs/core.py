@@ -3,7 +3,7 @@ import time
 import discord
 from discord.ext import commands
 
-from cogs import database
+from cogs.internal import database
 
 
 class Core(commands.Cog):
