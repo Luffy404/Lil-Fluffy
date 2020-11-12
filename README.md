@@ -39,11 +39,18 @@
     
 ## About the Project
 
+This Project is a Discord Bot, was created on October 30, 2020.
+I started writing Discord Bots 2 Years ago but stopped because I didn't have enough time.
+I got interested in uploading Projects to Github and what would be better then to create Discord Bots?
+This bot contains features I decided to keep from old Versions.
+
 ### Built with
+This Bot bases on Python 3.9 
 
 ## Getting Started
-
+To get started you should download the current ZIP (I **never** Push commits without testing them)
 ### Prerequisites
+
 
 ### Installation
 
