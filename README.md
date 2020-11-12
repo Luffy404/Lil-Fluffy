@@ -14,7 +14,7 @@
     ·
     <a href="https://github.com/Luffy404/Lil-Fluffy/issues">Request Feature</a>
   </p>
-</p>
+
 
 ## Table of Contents
 
