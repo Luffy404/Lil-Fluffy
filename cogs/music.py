@@ -166,6 +166,7 @@ class MusicPlayer:
         return self.bot.loop.create_task(self._cog.cleanup(guild))
 
 
+# noinspection PyProtectedMember
 class Music(commands.Cog):
     """Music related commands."""
 
@@ -225,6 +226,8 @@ class Music(commands.Cog):
             The channel to connect to. If a channel is not specified, an attempt to join the voice channel you are in
             will be made.
         This command also handles moving the bot to different channels.
+        :param channel:
+        :param ctx:
         """
         if not channel:
             try:
@@ -258,6 +261,8 @@ class Music(commands.Cog):
         ------------
         search: str [Required]
             The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
+            :param search:
+            :param ctx:
         """
         await ctx.trigger_typing()
 
@@ -373,6 +378,8 @@ class Music(commands.Cog):
         ------------
         volume: float or int [Required]
             The volume to set the player to in percentage. This must be between 1 and 100.
+            :param ctx:
+            :param vol:
         """
         vc = ctx.voice_client
 
