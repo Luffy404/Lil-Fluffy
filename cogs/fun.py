@@ -5,6 +5,7 @@ from cogs.internal import requests
 
 
 class Fun(commands.Cog):
+    """Entertaining Command."""
     def __init__(self, bot):
         self.bot = bot
 
