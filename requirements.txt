@@ -8,3 +8,5 @@ psutil
 youtube_dl
 ffmpeg
 ffmpeg-python
+setuptools
+aiohttp
