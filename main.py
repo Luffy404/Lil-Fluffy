@@ -1,11 +1,10 @@
-import time
-from datetime import datetime
 import json
 import logging
 import os
+import time
+from datetime import datetime
 
 from discord.ext import commands
-
 
 with open('token.secret')as fp:
     TOKEN = fp.read().strip()
@@ -52,10 +51,9 @@ def get_prefix(bot, message):
 
 client = commands.Bot(command_prefix=get_prefix, description=DESCRIPTION)
 
-
 for cog in COGS:
     try:
-        client.load_extension("cogs."+cog)
+        client.load_extension("cogs." + cog)
         print(f"Loaded {cog}.")
     except Exception as e:
         exc = f"{type(e).__name__}: {e}"
