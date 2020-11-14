@@ -50,10 +50,34 @@ This Bot bases on Python 3.9
 ## Getting Started
 To get started you should download the current ZIP (I **never** Push commits without testing them)
 ### Prerequisites
+In order to get the bot Running you need to install the requirements in the requirements.txt file.
+```cmd
+python3 -m pip install -r requirements.txt -U
+```
+You also need [FFMPEG](https://ffmpeg.org) to use the [music.py](#musicpy) Extension
 
 
 ### Installation
-
+After you downloaded the Bot, there are some files you should change / create.
+* config.json
+    * In this File you should change some Settings. The first three settings ('DESCRIPTION', 'PREFIXES' & 'QUESTIONMARK') 
+can be changed.
+    * **DESCRIPTION** will be the description of the Bot.
+    * **PREFIXES** will be the Prefixes the Bot responds to. (The bot also responds to it being tagged)
+    * **QUESTIONMARK** is the Emoji the bot reacts to when a Command is issued that havent been found.
+* bot.db
+    * You need to create a Database based on [SQLite](https://www.sqlite.org) called `bot.db`
+    * After that you need to execute the Command:
+    ```sql
+    CREATE TABLE "counter" (
+	"all_messages"	INTEGER,
+	"all_commands"	INTEGER,
+	"completed_commands"	INTEGER,
+	"loc"	INTEGER,
+	"highest_loc"	INTEGER,
+	"chars_in_total"	INTEGER,
+	"highest_chars_in_total"	INTEGER)
+    ```
 ## Cogs
   
 ### core.py
