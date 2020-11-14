@@ -8,6 +8,7 @@ from cogs.internal import database
 
 
 class Core(commands.Cog):
+    """Core features of the Bot."""
     def __init__(self, bot):
         self.bot = bot
 
