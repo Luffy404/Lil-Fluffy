@@ -21,6 +21,7 @@ with open(str(Path().parent.absolute()) + "\\config.json") as fp:
 
 # noinspection PyUnusedLocal,PyUnusedLocal
 class Listener(commands.Cog):
+    """Events for the Bot"""
     def __init__(self, bot):
         self.bot = bot
 
