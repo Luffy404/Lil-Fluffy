@@ -2,6 +2,7 @@ from discord.ext import commands
 
 
 class Say(commands.Cog):
+    """Commands the bot can Say"""
     def __init__(self, bot):
         self.bot = bot
 
