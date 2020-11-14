@@ -4,11 +4,9 @@ import os
 import pathlib
 from pathlib import Path
 from textwrap import dedent
-
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
-
 from cogs.internal import database
 
 with open(str(Path().parent.absolute()) + "\\config.json") as fp:
