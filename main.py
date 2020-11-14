@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 
 from discord.ext import commands
+from pretty_help import PrettyHelp
 
 with open('token.secret')as fp:
     TOKEN = fp.read().strip()
@@ -50,6 +51,7 @@ def get_prefix(bot, message):
 
 
 client = commands.Bot(command_prefix=get_prefix, description=DESCRIPTION)
+client.help_command = PrettyHelp(color=0xF9006F)
 
 for cog in COGS:
     try:
