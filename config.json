@@ -1,11 +1,31 @@
 {
-  "DESCRIPTION" : "This bot is made by Mad Luffy#3039",
-  "PREFIXES" : ["l!", "L!", ".", "ll!", "LL!", "Ll!", "lL!"],
-  "QUESTIONMARK" : "<:Command_Not_Found:514789597826252820>",
-  "LOG_AS_FILE" : false,
-  "LOG_MESSAGES" : true,
-  "LOGFORMAT" : "[%(asctime)s] [%(levelname)-8s] [%(filename)-15s:%(lineno)-4d] %(message)s",
-  "DATEFORMAT" : "%d/%m/%Y %H:%M:%S",
-  "FILEFORMATS_TO_COUNT" : [".py", ".bat", ".json"],
-  "COGS" : ["say", "listener", "core", "information", "debug", "music", "fun"]
+  "DESCRIPTION": "This bot is made by Mad Luffy#3039",
+  "PREFIXES": [
+    "l!",
+    "L!",
+    ".",
+    "ll!",
+    "LL!",
+    "Ll!",
+    "lL!"
+  ],
+  "QUESTIONMARK": "<:Command_Not_Found:514789597826252820>",
+  "LOG_AS_FILE": false,
+  "LOG_MESSAGES": true,
+  "LOGFORMAT": "[%(asctime)s] [%(levelname)-8s] [%(filename)-15s:%(lineno)-4d] %(message)s",
+  "DATEFORMAT": "%d/%m/%Y %H:%M:%S",
+  "FILEFORMATS_TO_COUNT": [
+    ".py",
+    ".bat",
+    ".json"
+  ],
+  "COGS": [
+    "say",
+    "listener",
+    "core",
+    "information",
+    "debug",
+    "music",
+    "fun"
+  ]
 }
