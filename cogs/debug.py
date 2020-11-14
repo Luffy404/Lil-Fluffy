@@ -4,6 +4,7 @@ from discord.ext import commands
 
 
 class Debug(commands.Cog):
+    """Debug Commands"""
     def __init__(self, bot):
         self.bot = bot
 
