@@ -340,9 +340,9 @@ class Music(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'],
+    @commands.command(name='np', aliases=['current', 'currentsong', 'playing'],
                       brief="Shows what currently is playing.")
-    async def now_playing_(self, ctx):
+    async def np_(self, ctx):
         """Display information about the currently playing song."""
         vc = ctx.voice_client
 
