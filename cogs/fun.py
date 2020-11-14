@@ -15,12 +15,11 @@ class Fun(commands.Cog):
         """
         data = await requests.get_data('https://nekos.life/api/v2/img/baka')
         image_url = data["url"]
-        embed = discord.Embed()
+        embed = discord.Embed().set_image(url=image_url) \
+            .set_footer(icon_url=ctx.message.author.avatar_url, text=f"Requested by {ctx.message.author.name}")
         embed.title = 'BAKA!'
         if member is not None:
             embed.description = f'{member.mention}'
-        embed.set_image(url=image_url)
-        embed.set_footer(icon_url=ctx.message.author.avatar_url, text=f"Requested by {ctx.message.author.name}")
         await ctx.send(embed=embed)
 
 
