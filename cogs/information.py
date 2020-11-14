@@ -14,6 +14,7 @@ bot_uptime = time.monotonic()
 
 
 class Information(commands.Cog):
+    """Informative Commands."""
     def __init__(self, bot):
         self.bot = bot
 
