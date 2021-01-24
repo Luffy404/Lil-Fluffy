@@ -1,12 +1,12 @@
 import sqlite3
 
 
-def create_connection():
-    return sqlite3.connect('bot.db')
+def create_connection(database):
+    return sqlite3.connect(database)
 
 
-def execute_command(command):
-    database = create_connection()
+def execute_command(command, database='bot.db'):
+    database = create_connection(database)
     cursor = database.cursor()
     result = cursor.execute(command)
     database.commit()
@@ -14,8 +14,8 @@ def execute_command(command):
     return result
 
 
-def execute_command_fetchall(command):
-    database = create_connection()
+def execute_command_fetchall(command, database='bot.db'):
+    database = create_connection(database)
     cursor = database.cursor()
     result = cursor.execute(command)
     result = result.fetchall()
