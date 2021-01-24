@@ -5,8 +5,8 @@ with open('README.md') as fp:
 
 
 def parse_requirements_file():
-    with open("requirements.txt") as fp:
-        dependencies = (d.strip() for d in fp.read().split("\n") if d.strip())
+    with open("requirements.txt") as file:
+        dependencies = (d.strip() for d in file.read().split("\n") if d.strip())
         return [d for d in dependencies if not d.startswith("#")]
 
 
