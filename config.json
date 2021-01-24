@@ -17,7 +17,9 @@
   "FILEFORMATS_TO_COUNT": [
     ".py",
     ".bat",
-    ".json"
+    ".json",
+    ".txt",
+    ".md"
   ],
   "COGS": [
     "say",
