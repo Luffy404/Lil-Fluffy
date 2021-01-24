@@ -11,7 +11,7 @@ from discord.ext.commands import Bot
 
 from cogs.internal import database
 
-with open(os.path.join(os.pardir, "config.json")) as fp:
+with open("config.json") as fp:
     config = json.load(fp)
     QUESTIONMARK = config["QUESTIONMARK"]
     LOG_MESSAGES = config["LOG_MESSAGES"]
