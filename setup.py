@@ -12,7 +12,7 @@ def parse_requirements_file():
 
 setuptools.setup(
     name='Lil-Fluffy-V3',
-    version='BETA',
+    version='0.9.6',
     author='Luffy404',
     description='This Bot is created by Luffy404 and can execute various Tasks',
     license='MIT',
