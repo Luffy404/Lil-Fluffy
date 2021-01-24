@@ -3,7 +3,7 @@ discord
 discord.py[voice]
 wheel
 mysql-connector-python
-libneko
+libneko==0.24.9
 psutil
 youtube_dl
 ffmpeg
