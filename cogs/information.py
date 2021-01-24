@@ -161,6 +161,8 @@ class Information(commands.Cog):
         Shows Permissions Users / Bots have.
         Needs permission to manage roles, to make the command work.
         """
+        if member is None:
+            member = ctx.message.author
         permissions = '`' + '`\n `'.join(perm for perm, value in member.guild_permissions if value).upper() + '`'
         navigator = pag.EmbedNavigatorFactory()
         navigator += f"{member.name}#{member.discriminator}'s Permissions:\n\n{permissions}"
@@ -198,14 +200,15 @@ class Information(commands.Cog):
         embed = discord.Embed(color=0xF9006F)
         embed.set_image(url=guild.icon_url)
         embed.title = guild.name
-        embed.add_field(name="Server", value=f"Name: **{guild.name}**\n(**{guild.id}**)\n\nOwner: **{guild.owner.name}#"
-                                             f"{guild.owner.discriminator}**\n(**{guild.owner_id}**)\nRegion: "
+        user = self.bot.get_user(guild.owner_id)
+        embed.add_field(name="Server", value=f"Name: **{guild.name}**\n(**{guild.id}**)\n\nOwner: **{user.name}#"
+                                             f"{user.discriminator}**\n(**{guild.owner_id}**)\nRegion: "
                                              f"**{guild.region}**\nServer created at:"
-                                             f" **{guild.created_at.strftime('%d-%m-%y  %H:%M:%S')}**")
+                                             f" **{guild.created_at.strftime('%d-%m-%y  %H:%M:%S')}**", inline=False)
         embed.add_field(name="Members", value=f"**{total_users}** Total Users\n**{users}** People\n"
-                                              f"**{bots}** Bots")
+                                              f"**{bots}** Bots", inline=True)
         embed.add_field(name="Channels", value=f"**{categories}** Categories\n**{text_channels}** Text Channels\n"
-                                               f"**{voice_channels}** Voice Channels")
+                                               f"**{voice_channels}** Voice Channels", inline=True)
         embed.set_footer(icon_url=application_info.icon_url, text=f"Requested by {ctx.message.author.name}")
 
         navigator = pag.EmbedNavigatorFactory()
