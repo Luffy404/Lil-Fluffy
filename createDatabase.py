@@ -10,7 +10,8 @@ def createDatabase(databaseName):
                             "highest_loc" INTEGER,
                             "chars_in_total" INTEGER,
                             "highest_chars_in_total" INTEGER
-                            );
+                            );''', databaseName)
+    database.execute_command('''
                             CREATE TABLE IF NOT EXISTS server(
                             id INTEGER,
                             serverId INTEGER,
