@@ -10,4 +10,5 @@ ffmpeg
 ffmpeg-python
 setuptools
 aiohttp
+mcstatus
 discord-pretty-help

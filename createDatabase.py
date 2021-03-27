@@ -2,7 +2,7 @@ from cogs.internal import database
 
 
 def createDatabase(databaseName):
-    database.execute_command('''CREATE TABLE "counter" (
+    database.execute_command('''CREATE TABLE IF NOT EXISTS "counter" (
                             "all_messages" INTEGER,
                             "all_commands" INTEGER,
                             "completed_commands" INTEGER,
@@ -11,7 +11,7 @@ def createDatabase(databaseName):
                             "chars_in_total" INTEGER,
                             "highest_chars_in_total" INTEGER
                             );
-                            CREATE TABLE server(
+                            CREATE TABLE IF NOT EXISTS server(
                             id INTEGER,
                             serverId INTEGER,
                             language VARCHAR(20),
