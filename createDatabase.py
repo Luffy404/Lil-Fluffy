@@ -10,7 +10,15 @@ def createDatabase(databaseName):
                             "highest_loc" INTEGER,
                             "chars_in_total" INTEGER,
                             "highest_chars_in_total" INTEGER
-                            )''', databaseName)
+                            );
+                            CREATE TABLE server(
+                            id INTEGER,
+                            serverId INTEGER,
+                            language VARCHAR(20),
+                            serverIp VARCHAR(15),
+                            serverPort VARCHAR(5),
+                            PRIMARY KEY(id)
+                            );''', databaseName)
     database.execute_command('''INSERT INTO "counter" VALUES(0, 0, 0, 0, 0, 0 , 0)''', databaseName)
 
 

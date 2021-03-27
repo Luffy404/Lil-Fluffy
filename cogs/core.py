@@ -32,6 +32,12 @@ class Core(commands.Cog):
         heartbeat = ctx.bot.latency * 1000
         await msg.edit(content=f':heart: **{heartbeat:,.2f} ms**\t:file_cabinet: **{millis:,.2f} ms**.')
 
+    @commands.command(brief="Sets the Language of your server!", usage=["german, english"])
+    @commands.has_permissions(administrator=True)
+    async def language(self, ctx, message):
+        database.execute_command(f'UPDATE server SET language = "{message}" WHERE serverId = {ctx.guild.id};')
+        await ctx.send("Server language successfully Changed!")
+
     @commands.command(hidden=True, brief='Executes a Command in the Database')
     @commands.check(commands.is_owner())
     async def execute(self, ctx, *, message):

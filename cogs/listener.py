@@ -19,7 +19,6 @@ with open("config.json") as fp:
     fp.close()
 
 
-# noinspection PyUnusedLocal,PyUnusedLocal
 class Listener(commands.Cog):
     """Events for the Bot"""
     def __init__(self, bot):
@@ -113,6 +112,7 @@ class Listener(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
+        database.execute_command(f'INSERT INTO server (serverId) VALUES ({guild.id});')
         logging.info("Succsessfully joined a server: " + guild.name)
         logging.info(f"Servers ({len(Bot(self.bot).guilds)}")
         for guild in Bot(self.bot).guilds:
@@ -120,6 +120,7 @@ class Listener(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
+        database.execute_command(f'DELETE FROM server WHERE serverId = {guild.id}')
         logging.info("I Left a server: " + guild.name)
         logging.info(f"Servers ({len(Bot(self.bot).guilds)}")
         for guild in Bot(self.bot).guilds:
